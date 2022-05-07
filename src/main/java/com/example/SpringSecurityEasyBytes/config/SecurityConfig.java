@@ -27,7 +27,7 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 		.authorizeRequests()
-			.anyRequest().denyAll()
+			.anyRequest().permitAll()
 		.and()
 		.formLogin() //it allowed and get the request from the browser
 		.and()
