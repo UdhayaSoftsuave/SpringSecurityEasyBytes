@@ -30,5 +30,9 @@ public class BankController {
 	public String getLoan() {
 		return "Loan";
 	}
+	@GetMapping("/myCards")
+	public String getCards() {
+		return "Cards";
+	}
 
 }
