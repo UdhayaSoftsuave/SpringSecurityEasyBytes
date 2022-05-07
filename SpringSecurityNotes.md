@@ -1,0 +1,1 @@
+@ComponentScan("com.example.SpringSecurityEasyBytes.controller") -> To access the outside package controller.
