@@ -7,16 +7,27 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configuration
 public class SecurityConfig  extends WebSecurityConfigurerAdapter{
 
+//	@Override
+//	protected void configure(HttpSecurity http) throws Exception {
+//		http
+//		.authorizeRequests()
+//			.antMatchers("/myAccount").authenticated()
+//			.antMatchers("/myBalance").authenticated()
+//			.antMatchers("/myLoan").authenticated()
+//			.antMatchers("/myCards").authenticated()
+//			.antMatchers("/notices").permitAll()
+//			.antMatchers("/contact").permitAll()
+//		.and()
+//		.formLogin() //it allowed and get the request from the browser
+//		.and()
+//		.httpBasic(); //it is allowed and get the request from the other backend application (RestTemplate) 
+//	} 
+	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 		.authorizeRequests()
-			.antMatchers("/myAccount").authenticated()
-			.antMatchers("/myBalance").authenticated()
-			.antMatchers("/myLoan").authenticated()
-			.antMatchers("/myCards").authenticated()
-			.antMatchers("/notices").permitAll()
-			.antMatchers("/contact").permitAll()
+			.anyRequest().denyAll()
 		.and()
 		.formLogin() //it allowed and get the request from the browser
 		.and()
