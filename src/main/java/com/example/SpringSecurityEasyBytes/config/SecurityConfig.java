@@ -19,12 +19,14 @@ import org.springframework.security.provisioning.JdbcUserDetailsManager;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig  extends WebSecurityConfigurerAdapter{
-	@Autowired
-	public DataSource dataSource;
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
+		.cors().and().csrf().disable()
 		.authorizeRequests()
+			.antMatchers("/registerUser").permitAll()
+			.antMatchers("/save").permitAll()
 			.antMatchers("/myAccount").authenticated()
 			.antMatchers("/myBalance").authenticated()
 			.antMatchers("/myLoan").authenticated()
@@ -38,10 +40,10 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter{
 	}
 
 
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {		
-		auth.userDetailsService(new JdbcUserDetailsManager(dataSource));
-	}
+//	@Override
+//	protected void configure(AuthenticationManagerBuilder auth) throws Exception {		
+//		auth.userDetailsService(new JdbcUserDetailsManager(dataSource));
+//	}
 	
 //	 @Bean 
 //	 public UserDetailsService userDetails(DataSource dataSource) {
